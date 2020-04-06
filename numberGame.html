@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="numberGame.css">
+    <script src="numberGame.js"></script>
 <title>The Number Game</title>
 </head>
-<body style="background-color:#E7E6FB">
+<body style="background-color:lightskyblue">
 
-<h1 style="text-align:center;">Gareth is a Silly Goose</h1>
+<h1 style="text-align:center;">The Number Game</h1>
+<div class="flex-container">
+    <div>Can you guess the number?</div>
+    <div><input type="text" id="numInput" /></div>
+    <div><input type="button" value="Guess?" onClick="guess()"></div>
+</div>
+
+<label for="difficulty">Choose a difficulty level:</label>
+<select id="difficulty">
+  <option value="Easy" id="option">Easy (10 Guesses)</option>
+  <option value="Medium" id="option">Medium (6 Guesses) </option>
+  <option value="Hard" id="option">Hard (4 Guesses)</option>
+</select>
 
 </body>
 </html>
