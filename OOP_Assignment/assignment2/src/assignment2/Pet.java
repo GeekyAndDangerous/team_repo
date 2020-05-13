@@ -9,7 +9,7 @@ package assignment2;
  *
  * @author Gazby
  */
-public class Pet {
+public class Pet implements Comparable {
     
     private int mPetNum;
     private String mPetName;
@@ -19,17 +19,17 @@ public class Pet {
     
     public Pet(int petNum, String petName, Sex petSex, boolean petVaccinated, String petOwner)
     {
-        if (mPetNum <= 0)
+        if (petNum <= 0)
         {
-            throw new IllegalArgumentException("Illegal Argument: petNum isn't a positive whole number");
+            throw new PetResortException("Illegal Argument: petNum isn't a positive whole number");
         }
-        else if (mPetName.isEmpty())
+        else if (petName.isEmpty())
         {
-           throw new IllegalArgumentException("Illegal Argument: petName is empty"); 
+           throw new PetResortException("Illegal Argument: petName is empty"); 
         }
-        else if (mPetOwner.isEmpty())
+        else if (petOwner.isEmpty())
         {
-           throw new IllegalArgumentException("Illegal Argument: petOwner is empty"); 
+           throw new PetResortException("Illegal Argument: petOwner is empty"); 
         }
         else
         {

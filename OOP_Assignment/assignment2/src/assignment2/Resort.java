@@ -13,25 +13,34 @@ import java.util.Arrays;
  *
  * @author Gazby
  */
-public class Resort {
-    private ArrayList <Booking> mBookings;
-    private ArrayList <Pet> mPets;
+public class Resort{
+    private ArrayList<Booking> mBookings;
+    public ArrayList<Pet> mPets;
+//    private String mResortName;
     
-//    public boolean addBooking(LocalDate dateIn, LocalDate dateOut, int petNum){
-//        boolean bookingAdded = false;
+    public Resort(){
+//        mResortName = resortName;
+        mBookings = new ArrayList<Booking>(1);
+        mPets = new ArrayList<Pet>(1);
+    }
+
+    public boolean addBooking(Booking newBooking){
+        boolean bookingAdded = false;
 //        for (Pet p : mPets){
-//            if (p.getPetNum() == petNum){
-//                    for (Booking b : mBookings){
-//                        if (b.getPetNum() == petNum){
-//                            if (dateIn.compareTo(b.getStartDate()) >= 0 && dateOut.compareTo(b.getEndDate()) )
-//                        }
-//                    Booking booking = new Booking(dateIn, dateOut, petNum);
-//                    mBookings.add(booking);
-//                    }
-//            }
+//            if (p.getPetNum() == newBooking.getPetNum()){
+                    for (Booking b : mBookings){
+                        if (b.getPetNum() == newBooking.getPetNum()){
+                            if (newBooking.getStartDate().isAfter(b.getEndDate()) || newBooking.getEndDate().isBefore(b.getStartDate())){
+                            mBookings.add(newBooking);
+                            bookingAdded = true;
+                        }
+                    }
+            }
 //        }
-//        return bookingAdded;
-//    }
+        return bookingAdded;
+    }
+    
+    
     public boolean isPet(int petNum){
         boolean isPet = false;
         for (Pet p : this.mPets) {
@@ -46,7 +55,7 @@ public class Resort {
         boolean petAdded = false;
         
         if (! isPet(newPet.getPetNum())) {
-            mPets.add(newPet);
+            this.mPets.add(newPet);
             petAdded = true;
         }
         return petAdded;
@@ -65,23 +74,24 @@ public class Resort {
     
     
     public Pet[] getPets(){        
-        Pet[] petArray = this.mPets.toArray(new Pet[mPets.size()]);
+        Pet[] petArray = mPets.toArray(new Pet[mPets.size()]);
         Arrays.sort(petArray);
         return petArray;
     }
-//    
-//    public Pet[] getPets(String name){
-//        ArrayList <Pet> petsByName;
-//        
-//        for (Pet p: mPets){
-//            if (p.getPetName().equals(name)){
-//                petsByName.add(p);
-//            }
-//        }
-////        Pet[] petArray;
-////        petArray = 
-//        return petsByName.getPets();
-//    }
+    
+    public Pet[] getPets(String name){
+        ArrayList <Pet> petsByName;
+        petsByName = new ArrayList <Pet>();
+        
+        for (Pet p: mPets){
+            if (p.getPetName().equals(name)){
+                petsByName.add(p);
+            }
+        }
+        Pet[] petArray;
+        petArray = petsByName.toArray(new Pet[petsByName.size()]);
+        return petArray;
+    }
     
     public Booking[] getBookings(){
         Booking[] bookings = this.mBookings.toArray(new Booking[mBookings.size()]);
@@ -89,9 +99,20 @@ public class Resort {
         return bookings;
     }
     
-    public Booking[] getBookings(String name){
-        Booking[] bookings;
-        bookings = new Booking[1];
-        return bookings;
+    public Booking[] getBookings(LocalDate dateIn){
+        ArrayList <Booking> bookingsByDateIn;
+        bookingsByDateIn = new ArrayList <Booking>();
+        
+        for (Booking b: mBookings){
+            if (b.getStartDate() == dateIn){
+                bookingsByDateIn.add(b);
+            }
+        }
+        
+        Booking[] bookingsArray = bookingsByDateIn.toArray(new Booking[bookingsByDateIn.size()]);
+        Arrays.sort(bookingsArray);
+        return bookingsArray;
     }
+    
+
 }
