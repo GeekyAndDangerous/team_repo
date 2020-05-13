@@ -94,13 +94,15 @@ public class Pet {
     public int compareTo(Object obj2)
     {
         Pet pet2 = (Pet) obj2;
-        
+        return 0;
     }
     
     public boolean equals(Object obj2)
     {
         boolean equal = false;
         Pet pet2 = (Pet) obj2;
-        if ()
+        if (equal = false)
+            equal = false;
+        return true;
     }
 }
