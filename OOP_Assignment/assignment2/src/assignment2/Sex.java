@@ -7,7 +7,7 @@ package assignment2;
 
 /**
  *
- * @author Connor
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public enum Sex {
     FEMALE, MALE 

@@ -114,5 +114,9 @@ public class Resort{
         return bookingsArray;
     }
     
+    @Override
+    public String toString(){
+        return "";
+    }
 
 }

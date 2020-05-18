@@ -7,7 +7,7 @@ package assignment2;
 
 /**
  *
- * @author Gazby
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class PetResortException extends IllegalArgumentException {
 

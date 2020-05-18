@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 /**
  * @version 1.0 
- * @author Chris Owen
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class Booking {
     

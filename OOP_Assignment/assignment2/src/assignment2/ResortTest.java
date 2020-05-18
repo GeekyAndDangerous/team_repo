@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author Gazby
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class ResortTest {
     
