@@ -11,7 +11,7 @@ import org.junit.Before;
 
 /**
  *
- * @author Gazby
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class DogTest {
 
