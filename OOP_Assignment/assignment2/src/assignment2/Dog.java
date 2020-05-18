@@ -7,7 +7,7 @@ package assignment2;
 
 /**
  *
- * @author Connor
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class Dog extends Pet {
     
@@ -29,8 +29,11 @@ public class Dog extends Pet {
     public boolean setDogColour(String dogColour)
     {
         boolean completed = true;
-        if (dogColour.isEmpty())
+        if (dogColour.isEmpty()){
             completed = false;
+        }else{
+            this.mDogColour = dogColour;
+        }
         return completed;
     }
     
@@ -42,8 +45,11 @@ public class Dog extends Pet {
     public boolean setDogBreed(String dogBreed)
     {
         boolean completed = true;
-        if  (dogBreed.isEmpty())
+        if  (dogBreed.isEmpty()){
             completed = false;
+        }else{
+            this.mDogBreed = dogBreed;
+        }
         return completed;
     }
     
@@ -55,6 +61,20 @@ public class Dog extends Pet {
     public boolean equals()
     {
         return false;
+    }
+    
+    @Override
+    public String toString(){
+        String result;
+        result = "dogNum=" + this.getPetNum();
+        result += "dogName=" + this.getPetName();
+        result += "dogSex=" + this.getPetSex();
+        result += "vaccinated=" + this.getPetVaccinated();
+        result += "dogOwner=" + this.getPetOwner();
+        result += "dogColour=" + this.mDogColour;
+        result += "dogBreed=" + this.mDogBreed;
+        
+        return result;
     }
     
 }

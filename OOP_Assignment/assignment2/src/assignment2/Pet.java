@@ -7,7 +7,7 @@ package assignment2;
 
 /**
  *
- * @author Gazby
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class Pet implements Comparable {
     
@@ -17,7 +17,8 @@ public class Pet implements Comparable {
     private boolean mPetVaccinated;
     private String mPetOwner;
     
-    public Pet(int petNum, String petName, Sex petSex, boolean petVaccinated, String petOwner)
+    public Pet(int petNum, String petName, Sex petSex, boolean petVaccinated,
+            String petOwner)
     {
         if (petNum <= 0)
         {
@@ -91,6 +92,10 @@ public class Pet implements Comparable {
         return completed;
     }
     
+    public String getPetOwner(){
+        return mPetOwner;
+    }
+    
     public int compareTo(Object obj2)
     {
         Pet pet2 = (Pet) obj2;
@@ -104,5 +109,17 @@ public class Pet implements Comparable {
         if (equal = false)
             equal = false;
         return true;
+    }
+    
+    public String toString(){
+        String result;
+        
+        result = "petNum=" + this.getPetNum();
+        result += "petName=" + this.getPetName();
+        result += "petSex=" + this.getPetSex();
+        result += "vaccinated=" + this.getPetVaccinated();
+        result += "petOwner=" + this.getPetOwner();
+        
+        return result;
     }
 }
