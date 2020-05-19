@@ -21,13 +21,13 @@ public class Booking {
     public Booking(LocalDate dateIn,LocalDate dateOut,int petNum) {
         if (dateIn.isAfter(LocalDate.now()) 
                 && dateOut.isAfter(dateIn)
-                && mPetNum > 0) {
+                && petNum > 0) {
             mPetNum = petNum;
             mDateIn = dateIn;
             mDateOut = dateOut;
         }
         else {
-//            throw new PetResortException();
+            throw new PetResortException("Date must be in the future. Date out must be after date in. Petnum must be more than 0");
         }
     }
     
@@ -82,8 +82,20 @@ public class Booking {
         if (mDateIn.equals(booking.getStartDate())
                 && mDateOut.equals(booking.getEndDate()) 
                 && mPetNum == booking.getPetNum()) {
+            result = true;
             
         }
+        return result;
+    }
+    
+    @Override 
+    public String toString(){
+        String result;
+        
+        result = "dateIn = " + this.getStartDate();
+        result += "dateOut = " + this.getEndDate();
+        result += "petNum = " + this.getPetNum();
+        
         return result;
     }
 }
