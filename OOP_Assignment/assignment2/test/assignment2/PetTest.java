@@ -108,7 +108,10 @@ public class PetTest {
      */
     @Test
     public void testCompareTo() {
-        
+        Pet p3 = new Pet(242, "Kylie", Sex.FEMALE, true, "Jennifer Holstein");
+        int expected = 1;
+        int actual = p1.compareTo(p3);
+        assertEquals(expected,actual);
     }
 
     /**
@@ -116,6 +119,10 @@ public class PetTest {
      */
     @Test
     public void testEquals() {
+        Pet p3 = new Pet(243, "Kylie", Sex.FEMALE, true, "Jennifer Holstein");
+        boolean expected = true;
+        boolean actual = p1.equals(p3);
+        assertEquals(expected,actual);
     }
     
     /**
