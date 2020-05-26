@@ -11,13 +11,19 @@ import java.time.LocalDate;
  * @version 1.0 
  * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
-public class Booking {
+public class Booking implements Comparable{
     
     //Data Members
     LocalDate mDateIn;
     LocalDate mDateOut;
     int mPetNum;
     
+    /**
+     * Constructor for the Booking class.
+     * @param dateIn The start date of the booking In LocalDate Format
+     * @param dateOut The end date of the booking in LocalDate Format
+     * @param petNum The pet number of the pet.
+     */
     public Booking(LocalDate dateIn,LocalDate dateOut,int petNum) {
         if (dateIn.isAfter(LocalDate.now()) 
                 && dateOut.isAfter(dateIn)
@@ -47,14 +53,20 @@ public class Booking {
         return mDateOut;
     }
     
+    /**
+     * Method returns the PetNumber assigned to the pet.
+     * @return int containing the petNumber
+     */
     public int getPetNum() {
         return mPetNum;
     }
     
     /**
      * CompareTo method. 
+     * @param obj The object to be compared against. Parsed to the Booking data type
      * @return int containing the difference between two booking objects
      */
+    @Override
     public int compareTo(Object obj) {
         Booking booking = (Booking) obj;
         int difference = 0;
@@ -88,13 +100,17 @@ public class Booking {
         return result;
     }
     
+    /**
+     * 
+     * @return 
+     */
     @Override 
     public String toString(){
         String result;
         
         result = "dateIn = " + this.getStartDate();
-        result += "dateOut = " + this.getEndDate();
-        result += "petNum = " + this.getPetNum();
+        result += ", dateOut = " + this.getEndDate();
+        result += ", petNum = " + this.getPetNum();
         
         return result;
     }

@@ -81,7 +81,7 @@ public class BookingTest {
      */
     @Test
     public void testToString() {
-        String expected = "dateIn = 2021-07-12dateOut = 2021-07-15petNum = 542";
+        String expected = "dateIn = 2021-07-12, dateOut = 2021-07-15, petNum = 542";
         String actual = b1.toString().trim();
         assertEquals(expected, actual);
     }
