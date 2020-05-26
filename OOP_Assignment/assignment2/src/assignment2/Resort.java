@@ -6,6 +6,7 @@
 package assignment2;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,39 +14,66 @@ import java.util.Arrays;
  *
  * @author Gazby
  */
-public class Resort{
+public class Resort {
+
     private ArrayList<Booking> mBookings;
     private ArrayList<Pet> mPets;
+    DateTimeFormatter dateTimeFormatter;
 //    private String mResortName;
-    
+
     public Resort() {
-//        mResortName = resortName;
+        dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-uuuu");
         mBookings = new ArrayList<>();
         mPets = new ArrayList<>();
     }
-
+    
     public boolean addBooking(Booking newBooking) {
         boolean bookingAdded = false;
+        boolean petExists = false;
+        ArrayList<Booking> petBookings = new ArrayList<>();
+        int petBookingsTotal = 0;
+
         if (isPet(newBooking.getPetNum())) {
+            //System.out.println("is pet");
+            if (mBookings.isEmpty()) {
+                this.mBookings.add(newBooking);
+                bookingAdded = true;
+            }
+            //Go through the array
             for (Booking b : mBookings) {
-                if (b.getPetNum() == newBooking.getPetNum()) {
-                    if (newBooking.getStartDate().isAfter(b.getEndDate()) || newBooking.getEndDate().isBefore(b.getStartDate())) {
-                        this.mBookings.add(newBooking);
-                        bookingAdded = true;
-                    }
+                //System.out.println("petNum" + b.getPetNum());
+                if (newBooking.getPetNum() == b.getPetNum()) {
+                    //System.out.println("same pet");
+                    petExists = true;
+                    petBookings.add(b);
                 } else {
+                    //System.out.println("not same pet");
+                    petExists = false;
+                }
+            }
+            //Where the actual modification happens.
+            if (petExists) {
+                //Do some validation
+                for (Booking pb : petBookings) {
+                    if (newBooking.getStartDate().isAfter(pb.getEndDate()) || newBooking.getEndDate().isBefore(pb.getStartDate())) {
+                        petBookingsTotal++;
+                    }
+                }
+                if (petBookingsTotal == petBookings.size()) {
                     this.mBookings.add(newBooking);
                     bookingAdded = true;
                 }
-
+            } else {
+                this.mBookings.add(newBooking);
+                bookingAdded = true;
             }
         }
 
         return bookingAdded;
     }
-
     
-    public boolean isPet(int petNum){
+
+    public boolean isPet(int petNum) {
         boolean isPet = false;
         for (Pet p : this.mPets) {
             if (p.getPetNum() == petNum) {
@@ -54,17 +82,17 @@ public class Resort{
         }
         return isPet;
     }
-    
+
     public boolean addPet(Pet newPet) {
         boolean petAdded = false;
-        
-        if (! isPet(newPet.getPetNum())) {
+
+        if (!isPet(newPet.getPetNum())) {
             this.mPets.add(newPet);
             petAdded = true;
         }
         return petAdded;
     }
-    
+
     public Pet getPet(int petNum) {
         Pet pet = null;
 
@@ -75,20 +103,19 @@ public class Resort{
         }
         return pet;
     }
-    
-    
-    public Pet[] getPets(){        
+
+    public Pet[] getPets() {
         Pet[] petArray = mPets.toArray(new Pet[mPets.size()]);
         Arrays.sort(petArray);
         return petArray;
     }
-    
-    public Pet[] getPets(String name){
-        ArrayList <Pet> petsByName;
-        petsByName = new ArrayList <>();
-        
-        for (Pet p: mPets){
-            if (p.getPetName().equals(name)){
+
+    public Pet[] getPets(String name) {
+        ArrayList<Pet> petsByName;
+        petsByName = new ArrayList<>();
+
+        for (Pet p : mPets) {
+            if (p.getPetName().equals(name)) {
                 petsByName.add(p);
             }
         }
@@ -96,31 +123,44 @@ public class Resort{
         petArray = petsByName.toArray(new Pet[petsByName.size()]);
         return petArray;
     }
-    
-    public Booking[] getBookings(){
+
+    public Booking[] getBookings() {
         Booking[] bookingsArray = mBookings.toArray(new Booking[mBookings.size()]);
         Arrays.sort(bookingsArray);
         return bookingsArray;
     }
-    
-    public Booking[] getBookings(LocalDate dateIn){
-        ArrayList <Booking> bookingsByDateIn;
-        bookingsByDateIn = new ArrayList <>();
-        
-        for (Booking b: mBookings){
-            if (b.getStartDate() == dateIn){
+
+    public Booking[] getBookings(LocalDate dateIn) {
+        ArrayList<Booking> bookingsByDateIn;
+        bookingsByDateIn = new ArrayList<>();
+
+        for (Booking b : mBookings) {
+            if (b.getStartDate() == dateIn) {
                 bookingsByDateIn.add(b);
             }
         }
-        
+
         Booking[] bookingsArray = bookingsByDateIn.toArray(new Booking[bookingsByDateIn.size()]);
         Arrays.sort(bookingsArray);
         return bookingsArray;
     }
-    
+
     @Override
-    public String toString(){
-        return "";
+    public String toString() {
+        String result;
+
+        result = "Pets array: [";
+        for (Pet p : this.mPets) {
+            result += "\n" + p.toString();
+        }
+        result += "]";
+        result += "\nBookings: [";
+        for (Booking b : this.mBookings) {
+            result += "\n" + b.toString();
+        }
+        result += "]";
+
+        return result;
     }
 
 }

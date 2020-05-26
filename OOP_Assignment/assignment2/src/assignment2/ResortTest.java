@@ -32,27 +32,37 @@ public class ResortTest {
     
     try{
         System.out.println(resort1.addBooking(new Booking(LocalDate.of(2021, 10, 02), LocalDate.of(2021, 12, 06), 291)));
+        System.out.println(resort1.addBooking(new Booking(LocalDate.of(2020, 10, 02), LocalDate.of(2020, 12, 06), 291)));
     }catch (PetResortException e){
         System.out.println(e);
     }
     
-      System.out.println(resort1.isPet(291));
+    try{
+        System.out.println(resort1.addBooking(new Booking(LocalDate.of(2021, 10, 01), LocalDate.of(2021, 11, 04), 291)));
+        System.out.println(resort1.addBooking(new Booking(LocalDate.of(2021, 10, 02), LocalDate.of(2020, 12, 06), 291)));
+    }catch (PetResortException e){
+        System.out.println(e);
+    }
+    
+//      System.out.println(resort1.isPet(291));
 //    System.out.println(resort1.getPet(325));
-//    
-//    petsArray = resort1.getPets();
-////    
-////    petsArray2 = resort1.getPets("Allan");
-////        System.out.println("\n" + Arrays.toString(petsArray2));
-////    
-////    for (Pet p : petsArray){
-////        System.out.println("\n" + p);
-////    }
-////    
-//    System.out.println("\n" + Arrays.toString(petsArray));
-//    
-    Booking[] bookingsArray = new Booking[4];
-    bookingsArray = resort1.getBookings();
-    System.out.println("\n" + Arrays.toString(bookingsArray));
+    
+    petsArray = resort1.getPets();
+    
+    petsArray2 = resort1.getPets("Allan");
+        System.out.println("\n" + Arrays.toString(petsArray2));
+    
+//    for (Pet p : petsArray){
+//        System.out.println("\n" + p);
+//    }
+    
+    System.out.println("\n" + Arrays.toString(petsArray));
+    
+//    Booking[] bookingsArray = new Booking[4];
+//    bookingsArray = resort1.getBookings();
+//    System.out.println("\n" + Arrays.toString(bookingsArray));
+    
+        System.out.println(resort1.toString());
     
        
 //    resort1.addBooking(new Booking(LocalDate dateIn,LocalDate dateOut,455));
