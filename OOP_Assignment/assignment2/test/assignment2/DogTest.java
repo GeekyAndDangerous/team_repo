@@ -70,6 +70,10 @@ public class DogTest {
      */
     @Test
     public void testCompareTo() {
+        Dog d3 = new Dog(242, "Kylie", Sex.FEMALE, true, "Jennifer Holstein", "Brown", "Schnauzer");
+        int expected = 1;
+        int actual = d1.compareTo(d3);
+        assertEquals(expected,actual);
     }
 
     /**
@@ -77,7 +81,12 @@ public class DogTest {
      */
     @Test
     public void testEquals() {
+        Dog d3 = new Dog(243, "Kylie", Sex.FEMALE, true, "Jennifer Holstein", "Brown", "Schnauzer");
+        boolean expected = true;
+        boolean actual = d1.equals(d3);
+        assertEquals(expected,actual);
     }
+    
     
     /**
      * Test of toString method, of class Dog.
