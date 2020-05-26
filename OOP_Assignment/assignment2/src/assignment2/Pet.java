@@ -99,16 +99,41 @@ public class Pet implements Comparable {
     public int compareTo(Object obj2)
     {
         Pet pet2 = (Pet) obj2;
-        return 0;
+        int difference = 0;
+        difference = this.getPetNum() - (pet2.getPetNum());
+        if (difference == 0)
+        {
+            difference = this.getPetName().compareTo(pet2.getPetName());
+            if (difference == 0)
+            {
+                difference = this.getPetSex().compareTo(pet2.getPetSex());
+                if (difference == 0)
+                {
+                    if(this.getPetVaccinated() == (pet2.getPetVaccinated()))
+                    {
+                        difference = this.getPetOwner().compareTo(pet2.getPetOwner());
+                    }
+                    else
+                        difference = 1;
+                }
+            }
+        }
+        return difference;
     }
     
     public boolean equals(Object obj2)
     {
-        boolean equal = false;
+        boolean equals = false;
         Pet pet2 = (Pet) obj2;
-        if (equal = false)
-            equal = false;
-        return true;
+        if (this.getPetNum() == pet2.getPetNum()
+                && this.getPetName().equals(pet2.getPetNum())
+                && this.getPetSex() == pet2.getPetSex()
+                && this.getPetVaccinated() == pet2.getPetVaccinated()
+                && this.getPetOwner().equals(pet2.getPetOwner()))
+        {
+        return equals = true;
+        }
+        return equals;
     }
     
     public String toString(){

@@ -11,8 +11,8 @@ package assignment2;
  */
 public class Dog extends Pet {
     
-    String mDogColour;
-    String mDogBreed;
+    private String mDogColour;
+    private String mDogBreed;
     
     public Dog(int petNum, String petName, Sex petSex, boolean petVaccinated, String petOwner, String dogColour, String dogBreed) 
     {
@@ -53,14 +53,34 @@ public class Dog extends Pet {
         return completed;
     }
     
-    public int compareTo()
+    public int compareTo(Object obj2)
     {
-        return 0;
+        int difference = 0;
+        Dog dog2 = (Dog) obj2;
+        difference = super.compareTo(dog2);
+        if (difference == 0)
+        {
+            difference = this.getDogColour().compareTo(dog2.getDogColour());
+            if (difference == 0)
+            {
+                difference = this.getDogBreed().compareTo(dog2.getDogBreed());
+            }
+                    
+        }
+        return difference;
     }
     
-    public boolean equals()
+    public boolean equals(Object obj2)
     {
-        return false;
+        boolean equals = false;
+        Dog dog2 = (Dog) obj2;
+        if (super.equals(dog2)
+                && this.getDogBreed().equals(dog2.getDogBreed())
+                && this.getDogColour().equals(dog2.getDogColour()))
+        {
+            equals = true;
+        }
+        return equals;
     }
     
     @Override
