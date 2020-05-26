@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Resort {
 
-    private ArrayList<Booking> mBookings;
+    public ArrayList<Booking> mBookings;
     private ArrayList<Pet> mPets;
     DateTimeFormatter dateTimeFormatter;
 //    private String mResortName;
