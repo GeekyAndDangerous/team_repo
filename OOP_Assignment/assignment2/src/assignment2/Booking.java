@@ -6,6 +6,7 @@
 package assignment2;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @version 1.0 
@@ -17,7 +18,8 @@ public class Booking implements Comparable{
     LocalDate mDateIn;
     LocalDate mDateOut;
     int mPetNum;
-    
+    DateTimeFormatter dateTimeFormatter1;
+
     /**
      * Constructor for the Booking class.
      * @param dateIn The start date of the booking In LocalDate Format
@@ -31,6 +33,8 @@ public class Booking implements Comparable{
             mPetNum = petNum;
             mDateIn = dateIn;
             mDateOut = dateOut;
+            dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd-MMM-uuuu");
+
         }
         else {
             throw new PetResortException("Date must be in the future. Date out must be after date in. Petnum must be more than 0");
@@ -108,8 +112,8 @@ public class Booking implements Comparable{
     public String toString(){
         String result;
         
-        result = "dateIn = " + this.getStartDate();
-        result += ", dateOut = " + this.getEndDate();
+        result = "dateIn = " + this.getStartDate().format(dateTimeFormatter1);
+        result += ", dateOut = " + this.getEndDate().format(dateTimeFormatter1);
         result += ", petNum = " + this.getPetNum();
         
         return result;
