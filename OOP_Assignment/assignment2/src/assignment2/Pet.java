@@ -103,7 +103,7 @@ public class Pet implements Comparable {
         difference = this.getPetNum() - pet2.getPetNum();
         if (difference == 0)
         {
-            difference = this.getPetName().compareTo(pet2.getPetName());
+            difference = this.getPetName().compareToIgnoreCase(pet2.getPetName());
             if (difference == 0)
             {
                 difference = this.getPetSex().compareTo(pet2.getPetSex());
@@ -111,7 +111,7 @@ public class Pet implements Comparable {
                 {
                     if(this.getPetVaccinated() == (pet2.getPetVaccinated()))
                     {
-                        difference = this.getPetOwner().compareTo(pet2.getPetOwner());
+                        difference = this.getPetOwner().compareToIgnoreCase(pet2.getPetOwner());
                     }
                     else
                         difference = 1;
@@ -126,10 +126,10 @@ public class Pet implements Comparable {
         boolean equals = false;
         Pet pet2 = (Pet) obj2;
         if (this.getPetNum() == pet2.getPetNum()
-                && this.getPetName().equals(pet2.getPetName())
+                && this.getPetName().equalsIgnoreCase(pet2.getPetName())
                 && this.getPetSex() == pet2.getPetSex()
                 && this.getPetVaccinated() == pet2.getPetVaccinated()
-                && this.getPetOwner().equals(pet2.getPetOwner()))
+                && this.getPetOwner().equalsIgnoreCase(pet2.getPetOwner()))
         {
         return equals = true;
         }
