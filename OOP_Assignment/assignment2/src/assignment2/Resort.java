@@ -86,7 +86,7 @@ public class Resort {
     public boolean addPet(Pet newPet) {
         boolean petAdded = false;
 
-        if (!isPet(newPet.getPetNum())) {
+        if (!isPet(newPet.getPetNum()) && newPet.getPetVaccinated()) {
             this.mPets.add(newPet);
             petAdded = true;
         }
