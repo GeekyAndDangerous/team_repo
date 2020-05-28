@@ -13,26 +13,19 @@ import java.util.Comparator;
 
 /**
  *
- * @author Gazby
+ * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
  */
 public class Resort {
 
-    public ArrayList<Booking> mBookings;
-    private ArrayList<Pet> mPets;
+    private final ArrayList<Booking> mBookings;
+    private final ArrayList<Pet> mPets;
     DateTimeFormatter dateTimeFormatter;
     
     static Comparator<Booking> mBookingSort;
     static {
-        mBookingSort = new Comparator<Booking>(){
-            @Override
-            public int compare(Booking b1, Booking b2){
-                return Integer.compare(b1.getPetNum(), (b2.getPetNum()));
-            }
-        };
+        mBookingSort = (Booking b1, Booking b2) -> Integer.compare(b1.getPetNum(), (b2.getPetNum()));
     }
-    
-//    private String mResortName;
-
+ 
     public Resort() {
         dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-uuuu");
         mBookings = new ArrayList<>();
@@ -46,26 +39,19 @@ public class Resort {
         int petBookingsTotal = 0;
 
         if (isPet(newBooking.getPetNum())) {
-            //System.out.println("is pet");
             if (mBookings.isEmpty()) {
                 this.mBookings.add(newBooking);
                 bookingAdded = true;
             }
-            //Go through the array
             for (Booking b : mBookings) {
-                //System.out.println("petNum" + b.getPetNum());
                 if (newBooking.getPetNum() == b.getPetNum()) {
-                    //System.out.println("same pet");
                     petExists = true;
                     petBookings.add(b);
                 } else {
-                    //System.out.println("not same pet");
                     petExists = false;
                 }
             }
-            //Where the actual modification happens.
             if (petExists) {
-                //Do some validation
                 for (Booking pb : petBookings) {
                     if (newBooking.getStartDate().isAfter(pb.getEndDate()) || newBooking.getEndDate().isBefore(pb.getStartDate())) {
                         petBookingsTotal++;
@@ -80,7 +66,6 @@ public class Resort {
                 bookingAdded = true;
             }
         }
-
         return bookingAdded;
     }
     
