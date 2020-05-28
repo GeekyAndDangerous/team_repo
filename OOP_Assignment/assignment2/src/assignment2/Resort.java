@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  *
@@ -19,6 +20,17 @@ public class Resort {
     public ArrayList<Booking> mBookings;
     private ArrayList<Pet> mPets;
     DateTimeFormatter dateTimeFormatter;
+    
+    static Comparator<Booking> mBookingSort;
+    static {
+        mBookingSort = new Comparator<Booking>(){
+            @Override
+            public int compare(Booking b1, Booking b2){
+                return Integer.compare(b1.getPetNum(), (b2.getPetNum()));
+            }
+        };
+    }
+    
 //    private String mResortName;
 
     public Resort() {
@@ -126,7 +138,7 @@ public class Resort {
 
     public Booking[] getBookings() {
         Booking[] bookingsArray = mBookings.toArray(new Booking[mBookings.size()]);
-        Arrays.sort(bookingsArray);
+        Arrays.sort(bookingsArray, mBookingSort);
         return bookingsArray;
     }
 
@@ -135,13 +147,13 @@ public class Resort {
         bookingsByDateIn = new ArrayList<>();
 
         for (Booking b : mBookings) {
-            if (b.getStartDate() == dateIn) {
+            if (b.getStartDate().compareTo(dateIn) == 0) {
                 bookingsByDateIn.add(b);
             }
         }
 
         Booking[] bookingsArray = bookingsByDateIn.toArray(new Booking[bookingsByDateIn.size()]);
-        Arrays.sort(bookingsArray);
+        Arrays.sort(bookingsArray, mBookingSort);
         return bookingsArray;
     }
 

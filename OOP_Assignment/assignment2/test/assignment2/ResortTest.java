@@ -132,20 +132,20 @@ public class ResortTest {
     @Test
     public void testGetBookings_0args() {
         Booking[] bookingsArray = new Booking[2];
-        bookingsArray[0] = new Booking(LocalDate.of(2020,9,1), LocalDate.of(2020,9,5), 243);
-        bookingsArray[1] = new Booking(LocalDate.of(2020,8,2), LocalDate.of(2020,8,6), 111);
+        bookingsArray[0] = new Booking(LocalDate.of(2020,8,2), LocalDate.of(2020,8,6), 111);
+        bookingsArray[1] = new Booking(LocalDate.of(2020,9,1), LocalDate.of(2020,9,5), 243);
         
         r1.addPet(p1);
         r1.addPet(p2);
         r1.addBooking(b1);
         r1.addBooking(b2);
-
-        
+                
         Booking[] expected = bookingsArray;
         Booking[] actual = r1.getBookings();
         
-        assertArrayEquals(expected, actual);
+        System.out.println(Arrays.toString(actual));
         
+        assertArrayEquals(expected, actual);
     }
 
     /**
@@ -164,6 +164,7 @@ public class ResortTest {
         
         Booking[] expected = bookingsArray;
         Booking[] actual = r1.getBookings(LocalDate.of(2020,9,1));
+        System.out.println(Arrays.toString(actual));
         
         assertArrayEquals(expected, actual);
     }
