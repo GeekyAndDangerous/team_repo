@@ -18,12 +18,48 @@ import org.junit.Before;
 public class BookingTest {
     
     Booking b1;
+    Booking constructorBooking;
     
     @Before
     public void setUp(){
         b1 = new Booking(LocalDate.of(2021, 7, 12), LocalDate.of(2021, 7, 15), 542);
     }
 
+    /**
+     * Test of booking constructor
+     */
+    @Test
+    public void testBookingConstructor() {
+        constructorBooking = new Booking(LocalDate.of(2021, 10, 16), LocalDate.of(2021, 10, 20), 691);
+        Booking expected = new Booking(LocalDate.of(2021, 10, 16), LocalDate.of(2021, 10, 20), 691);
+        Booking actual = constructorBooking;
+        assertEquals(expected, actual);
+    }
+    
+    /**
+     * Test of booking constructor exception: petNum <0
+     */
+    @Test(expected = PetResortException.class)
+    public void testBookingConstructor2() {
+        constructorBooking = new Booking(LocalDate.of(2021, 10, 16), LocalDate.of(2021, 10, 20), -1);;
+    }
+    
+    /**
+     * Test of booking constructor exception: Date in in the past
+     */
+    @Test(expected = PetResortException.class)
+    public void testBookingConstructor3() {
+        constructorBooking = new Booking(LocalDate.of(2019, 10, 16), LocalDate.of(2021, 10, 20), 691);;
+    }
+    
+    /**
+     * Test of booking constructor exception: Date out before date in
+     */
+    @Test(expected = PetResortException.class)
+    public void testBookingConstructor4() {
+        constructorBooking = new Booking(LocalDate.of(2021, 10, 16), LocalDate.of(2021, 5, 20), 691);;
+    }
+    
     /**
      * Test of getStartDate method, of class Booking.
      */

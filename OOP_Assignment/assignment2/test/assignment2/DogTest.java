@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package assignment2;
 
 import org.junit.Test;
@@ -12,6 +8,11 @@ import org.junit.Before;
 /**
  *
  * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
+ * @version 1.0
+ * CSE2OOP
+ * Tutor: Akhtar Ali Jalbani
+ * Assignment 2
+ * 
  */
 public class DogTest {
 
@@ -34,14 +35,22 @@ public class DogTest {
     }
 
     /**
-     * Test of setDogColour method, of class Dog.
+     * Test of setDogColour method, of class Dog. Valid data
      */
     @Test
     public void testSetDogColour() {
-        d1.setDogColour("Tan");
+        assertTrue(d1.setDogColour("Tan"));
         String expected = "Tan";
         String actual = d1.getDogColour();
         assertEquals(expected, actual);        
+    }
+    
+    /**
+     * Test of setDogColour method, of class Dog. Empty String
+     */
+    @Test
+    public void testSetDogColour2() {
+        assertFalse(d1.setDogColour(""));
     }
 
     /**
@@ -59,12 +68,20 @@ public class DogTest {
      */
     @Test
     public void testSetDogBreed() {
-        d1.setDogBreed("Whippet");
+        assertTrue(d1.setDogBreed("Whippet"));
         String expected = "Whippet";
         String actual = d1.getDogBreed();
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test of setDogBreed method, of class Dog.
+     */
+    @Test
+    public void testSetDogBreed2() {
+        assertFalse(d1.setDogBreed(""));
+    }
+    
     /**
      * Test of compareTo method, of class Dog.
      */
