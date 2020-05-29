@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package assignment2;
 
 import java.time.LocalDate;
-import java.time.Month;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-/**
+/*
  *
  * @author Gareth Jones, Chris Owen, Connor Wesley-Harvey
+ * @version 1.0
+ * CSE2OOP
+ * Tutor: Akhtar Ali Jalbani
+ * Assignment 2
+ * 
  */
 public class BookingTest {
     
