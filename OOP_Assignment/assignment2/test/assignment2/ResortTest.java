@@ -23,7 +23,7 @@ public class ResortTest {
     Pet p1;
     Pet p2;
     Pet p3;
-    Pet p4;
+    Dog p4;
     Booking b1;
     Booking b2;
 
@@ -33,7 +33,7 @@ public class ResortTest {
         p1 = new Pet(243, "Kylie", Sex.FEMALE, true, "Jennifer Holstein");
         p2 = new Pet(111, "Harley", Sex.MALE, true, "Barbara Herbert");
         p3 = new Pet(464, "Jimminy", Sex.MALE, false, "Hal Oberton");
-        p4 = new Dog(464, "Jimminy", Sex.MALE, false, "Hal Oberton", "Brown", "Schnauzer");
+        p4 = new Dog(464, "Jimminy", Sex.MALE, true, "Hal Oberton", "Brown", "Schnauzer");
         b1 = new Booking(LocalDate.of(2020, 9, 1), LocalDate.of(2020, 9, 5), 243);
         b2 = new Booking(LocalDate.of(2020, 8, 2), LocalDate.of(2020, 8, 6), 111);
     }
@@ -47,14 +47,28 @@ public class ResortTest {
         Pet expected = new Pet(243, "Kylie", Sex.FEMALE, true, "Jennifer Holstein");
         Pet actual = r1.getPet(243);
         assertEquals(expected, actual);
+        
     }
-
+    
+    
     /**
      * Test of getPet method, of class Resort no such petNum on file.
      */
     @Test
     public void testGetPet2() {
         assertNull(r1.getPet(243));
+    }
+    
+    /**
+     * Test of getPet method, of class Resort adding Dog object to Pet arraylist
+     */
+    @Test
+    public void testGetPet3() {
+        assertTrue(r1.addPet(p4));
+        Dog expected = new Dog(464, "Jimminy", Sex.MALE, true, "Hal Oberton", "Brown", "Schnauzer");
+        Pet actual = r1.getPet(464);
+
+        assertEquals(expected, actual);
     }
 
     /**

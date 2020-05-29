@@ -144,12 +144,31 @@ public class Resort {
     public boolean addPet(Pet newPet) {
         boolean petAdded = false;
 
-        if (!isPet(newPet.getPetNum()) && newPet.getPetVaccinated()) {
+//        if (newPet instanceof Dog) {
+//            Dog newDog = (Dog) newPet;
+//            if (!isPet(newDog.getPetNum()) && newDog.getPetVaccinated()) {
+//                this.mPets.add(newPet);
+//                petAdded = true;
+//            }
+//        }
+
+         if (!isPet(newPet.getPetNum()) && newPet.getPetVaccinated()) {
             this.mPets.add(newPet);
             petAdded = true;
         }
+
         return petAdded;
     }
+    
+//    public boolean addPet(Dog newDog) {
+//        boolean petAdded = false;
+//
+//        if (!isPet(newDog.getPetNum()) && newDog.getPetVaccinated()) {
+//            this.mPets.add(newDog);
+//            petAdded = true;
+//        }
+//        return petAdded;
+//    }
     
     /**
     * Method for retrieving a pet object's information from the Pet arraylist
